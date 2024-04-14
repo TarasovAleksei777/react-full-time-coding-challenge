@@ -1,0 +1,15 @@
+fragment Name on HumanName {
+    id
+    firstName
+    lastName
+    middleNames
+    title
+}
+
+fragment Address on Address {
+    id
+    addition
+    city
+    street
+    houseNumber
+}

@@ -1,0 +1,13 @@
+fragment Medication on Medication {
+    brand
+    labeler
+    packageCode
+    patientId
+    productCode
+}
+
+query listPatientMedications($id: String!) {
+    listPatientMedications(patientId: $id) {
+        ...Medication
+    }
+}

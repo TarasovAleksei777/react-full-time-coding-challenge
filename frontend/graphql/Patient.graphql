@@ -1,0 +1,47 @@
+# Must only contain the properties relevant for the table
+fragment PatientOptimized on Patient {
+    id
+    name {
+        firstName
+        lastName
+    }
+    dateOfBirth
+    sex
+}
+
+# Must contain all properties
+fragment Patient on Patient {
+    id
+    name {
+        ...Name
+    }
+    dateOfBirth
+    sex
+    address {
+        ...Address
+    }
+}
+
+query ListPatients {
+    listPatients {
+        ...PatientOptimized
+    }
+}
+query GetPatient($id: String!) {
+    getPatient(id: $id) {
+        ...Patient
+    }
+}
+mutation UpdatePatient($patient: PatientInput!) {
+    updatePatient(patient: $patient) {
+        ...Patient
+    }
+}
+mutation DeletePatient($id: String!) {
+    deletePatient(id: $id)
+}
+mutation AddPatient {
+    createPatient {
+        id
+    }
+}
